@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohd Shariq | TechOps Intern Portfolio</title>
+  <meta name="description" content="Portfolio of Mohd Shariq, a TechOps Intern focused on operations support, monitoring, troubleshooting, automation, and reliable technical workflows." />
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0d1424;
+      --bg-card: rgba(17, 27, 46, 0.82);
+      --text: #e8f0ff;
+      --muted: #95a3bd;
+      --line: rgba(148, 163, 184, 0.18);
+      --primary: #38bdf8;
+      --secondary: #22c55e;
+      --accent: #a78bfa;
+      --danger: #fb7185;
+      --shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
+      --radius: 22px;
+      --max: 1160px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 34%),
+        radial-gradient(circle at 80% 15%, rgba(167, 139, 250, 0.18), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(34, 197, 94, 0.12), transparent 36%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, black, transparent 92%);
+    }
+
+    .blob {
+      position: fixed;
+      width: 320px;
+      height: 320px;
+      border-radius: 999px;
+      filter: blur(72px);
+      opacity: 0.24;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .blob.one {
+      background: var(--primary);
+      top: 120px;
+      left: -120px;
+    }
+
+    .blob.two {
+      background: var(--accent);
+      right: -140px;
+      top: 420px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 11, 20, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: grid;
+      place-items: center;
+      color: #02111e;
+      font-weight: 900;
+      box-shadow: 0 12px 35px rgba(56, 189, 248, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a {
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.94rem;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.45);
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #03111f;
+      border: none;
+      box-shadow: 0 16px 45px rgba(34, 197, 94, 0.2);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      align-items: center;
+      padding: 84px 0 72px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 500px);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.09);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      color: #bae6fd;
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--secondary);
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.8);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.65); }
+      70% { box-shadow: 0 0 0 11px rgba(34, 197, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+
+    h1 {
+      font-size: clamp(2.45rem, 5.1vw, 4.55rem);
+      line-height: 1.03;
+      letter-spacing: -0.065em;
+      margin-bottom: 22px;
+      max-width: 680px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #e0f2fe, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+      align-items: center;
+    }
+
+    .quick-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .quick-info span {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+    }
+
+    .terminal {
+      width: 100%;
+      max-width: 500px;
+      justify-self: end;
+      align-self: center;
+      background: rgba(2, 6, 23, 0.86);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: none;
+      animation: floatTerminal 6s ease-in-out infinite;
+    }
+
+    @keyframes floatTerminal {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .terminal-top {
+      height: 46px;
+      background: rgba(15, 23, 42, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dots i {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      display: block;
+    }
+
+    .dots i:nth-child(1) { background: #fb7185; }
+    .dots i:nth-child(2) { background: #fbbf24; }
+    .dots i:nth-child(3) { background: #22c55e; }
+
+    .terminal-title {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .terminal-body {
+      padding: 22px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.86rem;
+      color: #cbd5e1;
+      max-height: 460px;
+      overflow: auto;
+      word-break: break-word;
+    }
+
+    .line {
+      margin-bottom: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .prompt {
+      color: var(--secondary);
+    }
+
+    .cmd {
+      color: #e0f2fe;
+    }
+
+    .comment {
+      color: #64748b;
+    }
+
+    .success {
+      color: #86efac;
+    }
+
+    .cyan {
+      color: #67e8f9;
+    }
+
+    .section {
+      padding: 86px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--primary);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      margin-bottom: 9px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 510px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+      overflow: hidden;
+      transition: 0.25s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(56,189,248,0.11), transparent 40%, rgba(34,197,94,0.08));
+      opacity: 0;
+      transition: 0.25s ease;
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.34);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--primary);
+      margin-bottom: 18px;
+      font-size: 1.4rem;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .profile-card {
+      padding: 30px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(56,189,248,0.12), rgba(17,27,46,0.86));
+      border: 1px solid rgba(56,189,248,0.2);
+      box-shadow: var(--shadow);
+    }
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 32px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #020617;
+      font-size: 2.4rem;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .profile-card h3 {
+      font-size: 1.6rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .contact-list a,
+    .contact-list span {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 12px 13px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.035);
+      word-break: break-word;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--line);
+    }
+
+    .timeline-date {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .timeline-content h3 {
+      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .timeline-content p {
+      color: var(--muted);
+    }
+
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 11px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid var(--line);
+      color: #dbeafe;
+      font-weight: 700;
+      font-size: 0.93rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.1);
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .project-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.035em;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .project-card ul {
+      color: var(--muted);
+      padding-left: 18px;
+      margin-bottom: 20px;
+    }
+
+    .project-card li {
+      margin-bottom: 8px;
+    }
+
+    .project-meta {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .mini {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.08);
+      color: #bae6fd;
+      border: 1px solid rgba(56, 189, 248, 0.16);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .metric {
+      padding: 24px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--line);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 2rem;
+      letter-spacing: -0.06em;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .cta {
+      padding: 42px;
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(56,189,248,0.18), rgba(34,197,94,0.12)),
+        rgba(17,27,46,0.86);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .cta h2 {
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .about-grid,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .terminal {
+        max-width: 100%;
+        justify-self: stretch;
+        animation: none;
+      }
+
+      h1 {
+        max-width: 100%;
+      }
+
+      .cards,
+      .achievement-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .cards,
+      .achievement-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-desc {
+        margin-top: 14px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        padding: 28px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise"></div>
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand" aria-label="Mohd Shariq Portfolio Home">
+        <span class="brand-mark">MS</span>
+        <span>Mohd Shariq</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn primary" href="mailto:mshariq824@gmail.com">Hire Me</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="pulse"></span>
+            Available for TechOps, IT Support & Operations roles
+          </div>
+
+          <h1>
+            TechOps Intern building
+            <span class="gradient-text">reliable systems</span>
+            and support workflows.
+          </h1>
+
+          <p class="hero-copy">
+            I am Mohd Shariq, a TechOps Intern based in Delhi with a focus on technical
+            operations, troubleshooting, monitoring, documentation, and automation-driven
+            support. I enjoy making systems easier to operate, issues easier to diagnose,
+            and workflows easier to scale.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn" href="https://github.com/MShariq824" target="_blank" rel="noopener">GitHub</a>
+          </div>
+
+          <div class="quick-info">
+            <span>📍 Delhi, India</span>
+            <span>💼 TechOps Intern</span>
+            <span>⚙️ Operations + Automation</span>
+          </div>
+        </div>
+
+        <div class="terminal" aria-label="Developer terminal preview">
+          <div class="terminal-top">
+            <div class="dots">
+              <i></i><i></i><i></i>
+            </div>
+            <div class="terminal-title">mohdshariq05@portfolio:~</div>
+          </div>
+
+          <div class="terminal-body">
+            <div class="line"><span class="prompt">$</span> <span class="cmd">whoami</span></div>
+            <div class="line success">Mohd Shariq — TechOps Intern</div>
+
+            <div class="line"><span class="prompt">$</span> <span class="cmd">cat focus.txt</span></div>
+            <div class="line">
+              <span class="comment"># Monitoring · Support · Troubleshooting · Automation · Documentation</span>
+            </div>
+
+            <div class="line"><span class="prompt">$</span> <span class="cmd">ops --strengths</span></div>
+            <div class="line cyan">✔ Incident triage and root-cause thinking</div>
+            <div class="line cyan">✔ Server health checks and log analysis</div>
+            <div class="line cyan">✔ Process documentation and SOP writing</div>
+            <div class="line cyan">✔ GitHub-based project collaboration</div>
+
+            <div class="line"><span class="prompt">$</span> <span class="cmd">contact --email</span></div>
+            <div class="line success">mshariq824@gmail.com</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">About</div>
+            <h2>Operations mindset with developer discipline.</h2>
+          </div>
+          <p class="section-desc">
+            I focus on practical technical operations: keeping workflows organized, supporting reliable systems,
+            identifying recurring issues, and improving support processes through documentation and automation.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="profile-card reveal">
+            <div class="avatar">MS</div>
+            <h3>Mohd Shariq</h3>
+            <p>TechOps Intern · Delhi</p>
+
+            <div class="contact-list">
+              <a href="mailto:mshariq824@gmail.com">✉️ mshariq824@gmail.com</a>
+              <a href="tel:+918864980972">📞 +91-8864980972</a>
+              <a href="https://linkedin.com/in/mohdshariq05" target="_blank" rel="noopener">🔗 linkedin.com/in/mohdshariq05</a>
+              <a href="https://github.com/MShariq824" target="_blank" rel="noopener">💻 github.com/MShariq824</a>
+            </div>
+          </div>
+
+          <div class="timeline reveal">
+            <div class="timeline-item">
+              <div class="timeline-date">Current</div>
+              <div class="timeline-content">
+                <h3>TechOps Intern</h3>
+                <p>
+                  Supporting technical operations by working on issue tracking, operational documentation,
+                  troubleshooting workflows, system checks, and process improvement for better reliability.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">Focus Area</div>
+              <div class="timeline-content">
+                <h3>Monitoring & Incident Support</h3>
+                <p>
+                  Interested in log analysis, alert triage, infrastructure monitoring, uptime checks,
+                  incident reporting, and structured root-cause investigation.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">Growth Goal</div>
+              <div class="timeline-content">
+                <h3>Automation-First Operations</h3>
+                <p>
+                  Building portfolio projects around scripts, dashboards, checklists, SOPs, and support tools
+                  that reduce repeated manual effort in technical operations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Skills</div>
+            <h2>Technical toolkit for TechOps support.</h2>
+          </div>
+          <p class="section-desc">
+            A practical skill set aligned with support engineering, operations, monitoring, ticket handling,
+            documentation, and entry-level DevOps workflows.
+          </p>
+        </div>
+
+        <div class="cards reveal">
+          <div class="card">
+            <div class="icon">🖥️</div>
+            <h3>System Operations</h3>
+            <p>Server health checks, uptime monitoring, issue triage, basic infrastructure support, and operational reporting.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🔍</div>
+            <h3>Troubleshooting</h3>
+            <p>Log review, error tracking, root-cause thinking, support ticket analysis, and structured debugging workflows.</p>
+          </div>
+
+          <div class="card">
+            <div class="icon">⚙️</div>
+            <h3>Automation</h3>
+            <p>Simple scripts, repeatable checklists, workflow improvement, GitHub-based versioning, and process standardization.</p>
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <div class="skills-wrap reveal">
+          <span class="skill">TechOps</span>
+          <span class="skill">IT Support</span>
+          <span class="skill">Monitoring</span>
+          <span class="skill">Incident Triage</span>
+          <span class="skill">Troubleshooting</span>
+          <span class="skill">Log Analysis</span>
+          <span class="skill">Git</span>
+          <span class="skill">GitHub</span>
+          <span class="skill">Linux Basics</span>
+          <span class="skill">Networking Basics</span>
+          <span class="skill">Documentation</span>
+          <span class="skill">SOP Writing</span>
+          <span class="skill">Python Basics</span>
+          <span class="skill">Shell Scripting Basics</span>
+          <span class="skill">Deployment Checks</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Projects</div>
+            <h2>Portfolio projects for TechOps readiness.</h2>
+          </div>
+          <p class="section-desc">
+            Project showcases designed around real TechOps responsibilities: monitoring, support workflows,
+            incident response, documentation, and automation.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="card project-card reveal">
+            <div class="project-top">
+              <div class="icon">📊</div>
+              <span class="tag">Monitoring</span>
+            </div>
+            <h3>Server Health Monitoring Dashboard</h3>
+            <p>
+              A TechOps-style dashboard concept for tracking system status, CPU usage, memory usage,
+              disk space, and uptime signals in one place.
+            </p>
+            <ul>
+              <li>Designed health-check views for faster system review.</li>
+              <li>Mapped alert categories by severity and response priority.</li>
+              <li>Created documentation for daily operational checks.</li>
+            </ul>
+            <div class="project-meta">
+              <span class="mini">Monitoring</span>
+              <span class="mini">Ops Dashboard</span>
+              <span class="mini">SOP</span>
+            </div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div class="project-top">
+              <div class="icon">🎫</div>
+              <span class="tag">Support</span>
+            </div>
+            <h3>Incident Ticket Triage Workflow</h3>
+            <p>
+              A structured support workflow for categorizing issues, identifying impact, assigning priority,
+              and documenting resolution steps.
+            </p>
+            <ul>
+              <li>Defined ticket labels for priority, status, and root cause.</li>
+              <li>Created repeatable response templates for common issues.</li>
+              <li>Improved clarity between reported issue and action taken.</li>
+            </ul>
+            <div class="project-meta">
+              <span class="mini">Ticketing</span>
+              <span class="mini">Incident Response</span>
+              <span class="mini">Documentation</span>
+            </div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div class="project-top">
+              <div class="icon">🚀</div>
+              <span class="tag">Deployment</span>
+            </div>
+            <h3>Deployment Readiness Checklist</h3>
+            <p>
+              A practical release-support checklist for verifying configuration, environment readiness,
+              rollback planning, logs, and post-deployment validation.
+            </p>
+            <ul>
+              <li>Organized pre-release and post-release verification tasks.</li>
+              <li>Added rollback and escalation notes for safer operations.</li>
+              <li>Built a simple checklist format for repeatable execution.</li>
+            </ul>
+            <div class="project-meta">
+              <span class="mini">Deployment</span>
+              <span class="mini">Checklist</span>
+              <span class="mini">Release Support</span>
+            </div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div class="project-top">
+              <div class="icon">📚</div>
+              <span class="tag">Knowledge Base</span>
+            </div>
+            <h3>TechOps Knowledge Base</h3>
+            <p>
+              A documentation hub for common operational issues, troubleshooting steps, escalation paths,
+              and reusable support notes.
+            </p>
+            <ul>
+              <li>Documented common issue patterns and suggested checks.</li>
+              <li>Created SOP-style pages for repeatable support tasks.</li>
+              <li>Structured knowledge articles for faster onboarding.</li>
+            </ul>
+            <div class="project-meta">
+              <span class="mini">SOP</span>
+              <span class="mini">Knowledge Base</span>
+              <span class="mini">Ops Writing</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Experience</div>
+            <h2>Hands-on TechOps learning path.</h2>
+          </div>
+          <p class="section-desc">
+            Focused on becoming a reliable operations contributor who can support systems, communicate clearly,
+            document processes, and reduce repeated manual work.
+          </p>
+        </div>
+
+        <div class="timeline reveal">
+          <div class="timeline-item">
+            <div class="timeline-date">TechOps Intern</div>
+            <div class="timeline-content">
+              <h3>Operational Support & Technical Coordination</h3>
+              <p>
+                Working on TechOps fundamentals including issue tracking, support coordination,
+                basic troubleshooting, status updates, documentation, and process clarity.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Project Work</div>
+            <div class="timeline-content">
+              <h3>Monitoring, Ticketing & SOP Projects</h3>
+              <p>
+                Building a portfolio around realistic operations scenarios such as server checks,
+                incident categorization, release checklists, and knowledge-base documentation.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Strengths</div>
+            <div class="timeline-content">
+              <h3>Reliable, Organized & Process-Oriented</h3>
+              <p>
+                Strong interest in clear communication, structured documentation, ownership of assigned tasks,
+                and learning the tools used in modern operations and support teams.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="achievements">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Highlights</div>
+            <h2>What I bring to a TechOps team.</h2>
+          </div>
+          <p class="section-desc">
+            A concise view of the strengths this portfolio is designed to showcase for TechOps internship
+            and entry-level operations opportunities.
+          </p>
+        </div>
+
+        <div class="achievement-grid reveal">
+          <div class="metric">
+            <strong>01</strong>
+            <span>TechOps internship experience</span>
+          </div>
+
+          <div class="metric">
+            <strong>04</strong>
+            <span>Operations-focused project showcases</span>
+          </div>
+
+          <div class="metric">
+            <strong>10+</strong>
+            <span>Relevant support and operations skills</span>
+          </div>
+
+          <div class="metric">
+            <strong>100%</strong>
+            <span>Focused on reliability and process clarity</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <div class="section-kicker">Contact</div>
+            <h2>Let’s connect for TechOps opportunities.</h2>
+            <p>
+              I am open to internships, entry-level TechOps roles, IT support roles, operations support,
+              and technical coordination opportunities where I can learn, contribute, and build reliable workflows.
+            </p>
+          </div>
+
+          <div class="hero-actions" style="margin: 0;">
+            <a class="btn primary" href="mailto:mshariq824@gmail.com">Email Me</a>
+            <a class="btn" href="tel:+918864980972">Call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>© <span id="year"></span> Mohd Shariq. All rights reserved.</p>
+      <p>
+        <a href="https://yourportfolio.work/mohdshariq05" target="_blank" rel="noopener">
+          yourportfolio.work/mohdshariq05
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const year = document.getElementById("year");
+    year.textContent = new Date().getFullYear();
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14 }
+    );
+
+    revealElements.forEach(element => observer.observe(element));
+
+    const terminalLines = document.querySelectorAll(".terminal-body .line");
+    terminalLines.forEach((line, index) => {
+      line.style.opacity = "0";
+      line.style.transform = "translateY(8px)";
+      setTimeout(() => {
+        line.style.transition = "0.4s ease";
+        line.style.opacity = "1";
+        line.style.transform = "translateY(0)";
+      }, 180 + index * 90);
+    });
+  </script>
+</body>
+</html>
